@@ -1,0 +1,44 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <th:block th:include="fragments/common-head"/>
+</head>
+<body>
+<nav th:include="fragments/common-navbar"/>
+
+<section class=jumbotron">
+    <h3>User registration</h3>
+    <form action="/editUser/submit" method="post">
+        <div class="container">
+            <table>
+                <tr>
+                    <td><label><b>Email</b></label></td>
+                    <td><input type="email" th:value="${user.getEmail()}" required></td>
+                </tr>
+                <tr>
+                    <td><label><b>First name</b></label></td>
+                    <td><input type="text" th:value="${user.getFirstName()}" required></td>
+                </tr>
+                <tr>
+                    <td><label><b>Last name</b></label></td>
+                    <td><input type="text"  th:value="${user.getLastName()}" name="lastName" required></td>
+                </tr>
+                <tr>
+                    <td><label><b>Age</b></label></td>
+                    <td><input type="number" th:value="${user.getAge()}"name="age" required></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn btn-success" type="submit">Submit</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</section>
+</title>
+</head>
+
+</body>
+</html>

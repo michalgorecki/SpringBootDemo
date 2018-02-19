@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:include="fragments/common-head"/>
+<title>Quote of the day...</title>
+    <style>
+        #quote {
+            font-size: 24px;
+            font-style: italic;
+            font-family: "Courier New";
+        }
+    </style>
+</head>
+<body>
+<nav th:include="fragments/common-navbar"/>
+<table class="table">
+    <th>
+        Quote of the day
+    </th>
+    <tr>
+        <td id="quote" th:text="'\''+${quote}+'\'' "/>
+    </tr>
+</table>
+
+</body>
+
+</html>

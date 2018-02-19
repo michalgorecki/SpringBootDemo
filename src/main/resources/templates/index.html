@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:include="fragments/common-head"/>
+</head>
+<body>
+<nav th:include="fragments/common-navbar"/>
+
+<section class=jumbotron">
+    <h3>User registration</h3>
+<form action="/submit" method="post">
+    <div class="container">
+        <table>
+            <tr>
+                <td><label><b>Email</b></label></td>
+                <td><input type="email" placeholder="Your email.." th:name="email" required></td>
+            </tr>
+            <tr>
+                <td><label><b>First name</b></label></td>
+                <td><input type="text" placeholder="First name.." name="firstName" required></td>
+            </tr>
+            <tr>
+                <td><label><b>Last name</b></label></td>
+                <td><input type="text" placeholder="Last name.." name="lastName" required></td>
+            </tr>
+            <tr>
+                <td><label><b>Age</b></label></td>
+                <td><input type="number" placeholder="Age.." name="age" required></td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-success" type="submit">Submit</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+</section>
+
+<section>
+    <div>
+        <h2>User list:</h2>
+    </div>
+    <table class="table">
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <tr th:each="userData : ${userList}">
+            <td th:text="${userData.getId()}"/>
+            <td th:text="${userData.getFirstName()}"></td>
+            <td th:text="${userData.getLastName()}"></td>
+            <td th:text="${userData.getEmail()}"></td>
+            <td th:text="${userData.getAge()}"></td>
+            <td><a class="btn btn-default" th:href="@{'/editUser/' + ${userData.getId()}}">Edit</a></td>
+            <td><a class="btn btn-danger" th:href="@{'/deleteUser/'+ ${userData.getId()}}">Delete</a></td>
+        </tr>
+    </table>
+</section>
+
+
+</body>
+</html>

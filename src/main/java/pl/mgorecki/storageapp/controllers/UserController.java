@@ -16,15 +16,21 @@ public class UserController {
 
     @GetMapping(value = "/")
     @ResponseBody
-    public RedirectView home(){
+    public RedirectView emptyAddressRedirect() {
         return new RedirectView("/index");
     }
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public ModelAndView index(Model model){
         ModelAndView mav = new ModelAndView("index");
-        mav.addObject("userList",userRepository.findAll());
         model.addAttribute("user",new User());
+        return mav;
+    }
+
+    @GetMapping
+    public ModelAndView home() {
+        ModelAndView mav = new ModelAndView("homepage");
+        mav.addObject("userList", userRepository.findAll());
         return mav;
     }
 

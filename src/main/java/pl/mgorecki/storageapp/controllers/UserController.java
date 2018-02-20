@@ -14,44 +14,33 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-
     @GetMapping(value = "/")
     @ResponseBody
     public RedirectView home(){
-        System.out.println("enter: home()");
         return new RedirectView("/index");
     }
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public ModelAndView index(Model model){
-        System.out.println("index()");
         ModelAndView mav = new ModelAndView("index");
         mav.addObject("userList",userRepository.findAll());
         model.addAttribute("user",new User());
         return mav;
     }
 
-    @GetMapping(value ="/editUser/{id}")
-    public ModelAndView editUser(@PathVariable("id") long id){
-        System.out.println("Attempting to edit user with id: "+id);
-        ModelAndView mav = new ModelAndView("edituser");
-        mav.addObject("user",userRepository.findOne(id));
-        return mav;
-    }
-    @PostMapping(value = "/editUser/submit/{id}")
-    public RedirectView submitEdit(@PathVariable("id") long id, @ModelAttribute User user){
-        
-        System.out.println("Submit edit: found user with id: "+ user.getId());
-
-        return new RedirectView("/index");
-    }
-
-
     @PostMapping(value = "/submit")
-    public RedirectView submit(@ModelAttribute User user){
-        System.out.println("Submitting user with id: "+user.getId());
+    public RedirectView submit(@ModelAttribute User user, Model model) {
+        System.out.println("Storing user with id: " + user.getId());
         userRepository.save(user);
         return new RedirectView("/index");
+    }
+
+    @GetMapping(value = "/editUser/{id}")
+    public ModelAndView editUser(@PathVariable("id") long id) {
+        System.out.println("Attempting to edit user with id: " + id);
+        ModelAndView mav = new ModelAndView("edituser");
+        mav.addObject("editableUser", userRepository.findOne(id));
+        return mav;
     }
 
     @GetMapping(value="/deleteUser/{id}")

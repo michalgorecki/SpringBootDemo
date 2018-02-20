@@ -27,7 +27,7 @@ public class UserController {
         return mav;
     }
 
-    @GetMapping
+    @GetMapping(value = "/home")
     public ModelAndView home() {
         ModelAndView mav = new ModelAndView("homepage");
         mav.addObject("userList", userRepository.findAll());

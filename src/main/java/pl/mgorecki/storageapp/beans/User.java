@@ -1,22 +1,27 @@
 package pl.mgorecki.storageapp.beans;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "userdata")
-
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private long id;
 
     private String firstName;
     private String lastName;
+    private String password;
     private int age;
+
     @Column(unique = true)
     private String email;
 
+    private Set<Role> roles;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
         return id;
     }
@@ -55,5 +60,23 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userdata_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

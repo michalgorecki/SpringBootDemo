@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
-import pl.mgorecki.storageapp.domain.Quote;
+import pl.mgorecki.storageapp.beans.Quote;
 
 @RestController
 public class QuoteController {

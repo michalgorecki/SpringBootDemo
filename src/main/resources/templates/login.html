@@ -1,14 +1,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <th:block th:include="fragments/common-head"/>
-
-    <title>Login</title>
 </head>
 <body>
-<nav th:include="fragments/common-navbar"/>
-
+<h3>Login</h3>
 
 <div class="jumbotron">
     <div th:if="${param.error}">
@@ -18,11 +13,11 @@
         You have been logged out
     </div>
 
-    <form th:action="@{/submitLogin}" method="post">
+    <form th:action="@{/login}" method="post">
         <table>
             <tr>
                 <td><label th:text="Email"/></td>
-                <td><input type="email" th:name="email"></td>
+                <td><input type="text" th:name="username"></td>
             </tr>
             <tr>
                 <td><label th:text="Password"/></td>
@@ -35,8 +30,6 @@
             </tr>
         </table>
     </form>
-
-
 </div>
 
 

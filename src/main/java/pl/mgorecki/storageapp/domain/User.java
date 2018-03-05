@@ -1,4 +1,4 @@
-package pl.mgorecki.storageapp.beans;
+package pl.mgorecki.storageapp.domain;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -65,7 +65,6 @@ public class User {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }

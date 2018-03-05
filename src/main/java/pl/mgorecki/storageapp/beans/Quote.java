@@ -1,7 +1,6 @@
-package pl.mgorecki.storageapp.domain;
+package pl.mgorecki.storageapp.beans;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import pl.mgorecki.storageapp.beans.Value;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Quote {

@@ -1,4 +1,4 @@
-package pl.mgorecki.storageapp.beans;
+package pl.mgorecki.storageapp.domain;
 
 import javax.persistence.*;
 import java.util.Set;
